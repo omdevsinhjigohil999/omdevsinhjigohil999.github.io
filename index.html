@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Game Developer Portfolio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- THREE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+</head>
+
+<body>
+
+    <canvas id="bg"></canvas>
+
+    <div class="container">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1 id="hero-name"></h1>
+            <p id="hero-role"></p>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section class="about glass">
+
+            <h2>About</h2>
+            <p id="about-text"></p>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <section class="skills glass">
+
+            <h2>Skills</h2>
+
+            <div id="skills-container" class="skills-grid"></div>
+
+        </section>
+
+
+        <!-- EXPERIENCE -->
+
+        <section class="experience">
+
+            <h2>Experience</h2>
+
+            <div class="timeline" id="timeline"></div>
+
+        </section>
+
+
+
+        <!-- PROJECTS -->
+
+        <section class="projects glass">
+
+            <h2>Projects</h2>
+
+            <div class="project-slider">
+
+                <div class="project-track" id="project-track"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- CONTACT -->
+
+        <section class="contact glass">
+
+            <h2>Contact</h2>
+            <p id="contact-email"></p>
+
+        </section>
+
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/three-scene.js"></script>
+
+</body>
+
+</html>
