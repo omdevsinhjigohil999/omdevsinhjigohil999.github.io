@@ -294,7 +294,7 @@ const portfolio = {
 
         {
             name: "FlipJump",
-            logo: "",
+            logo: "flipjump",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you jump to platforms.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -309,7 +309,7 @@ const portfolio = {
 
         {
             name: "ARFace Recognition",
-            logo: "",
+            logo: "arface",
             role: "Gameplay Programmer, Ui Designer",
             description: "A facial expression recognition app using unity's AR.",
             technologies: ["Unity", "AR", "OpenCV"],
