@@ -252,6 +252,112 @@ body {
     text-decoration: none;
 }
 
+.project-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.project-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.project-info h3 {
+    margin: 0;
+}
+
+.project-role {
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+.tech-stack {
+    margin-top: 10px;
+}
+
+.tech {
+    background: #222;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.platform-icons {
+    margin-top: 10px;
+}
+
+.platform-icons a {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #fff;
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.platform-icons a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.project-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 15px;
+}
+
+.project-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.project-info h3 {
+    margin: 0;
+}
+
+.project-role {
+    font-weight: 600;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+.tech-stack {
+    margin-top: 10px;
+}
+
+.tech {
+    background: #222;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.platform-icons {
+    margin-top: 10px;
+}
+
+.platform-icons a {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #fff;
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.platform-icons a:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 /* CONTACT */
 
 .contact p {
