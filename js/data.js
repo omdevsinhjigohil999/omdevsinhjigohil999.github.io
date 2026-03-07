@@ -67,21 +67,30 @@ const portfolio = {
     projects: [
 
         {
-            name: "Multiplayer Battle Game",
-            description: "Realtime multiplayer shooter using Unity Netcode.",
-            link: "#"
+            name: "ONE MAP: Battle Royale Online",
+            logo: "assets/projects/onemap.png",
+            role: "Gameplay Developer, UI Designer",
+            description: "Real-time multiplayer battle game using Unity Netcode and ECS architecture",
+            technologies: ["Unity", "C#", "Netcode for Entities", "ECS"],
+            link: "https://example.com"
         },
 
         {
-            name: "AR Furniture App",
-            description: "Place furniture in AR using ARCore.",
-            link: "#"
+            name: "Bal Hanuman - Adventure Game",
+            logo: "assets/projects/balhanuman.png",
+            role: "Gameplay Developer, Bug Fixer",
+            description: "Mobile platformer game with variety of levels",
+            technologies: ["Unity", "ARCore", "C#"],
+            link: "https://example.com"
         },
 
         {
-            name: "WebGL Space Shooter",
-            description: "3D browser shooter built with Three.js.",
-            link: "#"
+            name: "Hyper Casual Runner",
+            logo: "assets/projects/runner.png",
+            role: "Gameplay Programmer",
+            description: "Mobile hyper casual runner with optimized physics and smooth controls.",
+            technologies: ["Unity", "Mobile Optimization"],
+            link: "https://example.com"
         }
 
     ],

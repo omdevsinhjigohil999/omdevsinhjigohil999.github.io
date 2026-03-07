@@ -95,25 +95,41 @@ function renderExperience() {
 
 function renderProjects() {
 
-    const container = document.getElementById("project-track")
+    const container = document.getElementById("project-timeline")
 
-    let projects = [...portfolio.projects, ...portfolio.projects]
+    portfolio.projects.forEach(project => {
 
-    projects.forEach(project => {
+        const item = document.createElement("div")
+        item.className = "timeline-item"
 
-        const card = document.createElement("div")
+        item.innerHTML = `
 
-        card.className = "project-card"
+<div class="timeline-card">
 
-        card.innerHTML = `
+<img src="${project.logo}" class="project-logo">
+
+<div class="job-info">
 
 <h3>${project.name}</h3>
+<p class="project-role">${project.role}</p>
+
 <p>${project.description}</p>
-<a href="${project.link}" target="_blank">View Project →</a>
+
+<div class="tech-stack">
+${project.technologies.map(t => `<span class="tech">${t}</span>`).join("")}
+</div>
+
+<a href="${project.link}" target="_blank" class="project-link">
+Open Project ↗
+</a>
+
+</div>
+
+</div>
 
 `
 
-        container.appendChild(card)
+        container.appendChild(item)
 
     })
 
