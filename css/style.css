@@ -58,27 +58,62 @@ body {
     color: #c8d3f0;
 }
 
-/* SKILLS */
+/* SKILLS GRID */
 
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 14px;
+    gap: 12px;
     margin-top: 20px;
 }
 
+
+/* SKILL CARD */
+
 .skill {
-    padding: 14px;
-    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    background: rgba(125, 211, 252, 0.08);
-    transition: 0.3s;
+
+    padding: 10px 12px;
+
+    min-height: 42px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.05);
+
     border: 1px solid rgba(125, 211, 252, 0.15);
+
+    color: #dbe7ff;
+
+    line-height: 1.2;
+
+    transition: all .25s ease;
+
+    word-break: break-word;
+
 }
 
+
+/* HOVER */
+
 .skill:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(125, 211, 252, 0.2);
+
+    transform: translateY(-3px);
+
+    background: rgba(125, 211, 252, 0.12);
+
+    box-shadow: 0 6px 20px rgba(125, 211, 252, 0.2);
+
+    border-color: rgba(125, 211, 252, 0.35);
+
 }
 
 /* EXPERIENCE */
@@ -241,4 +276,87 @@ body {
 
 .contact p {
     color: #aab6d6;
+}
+
+/* COMPANY PROJECTS */
+
+.company-block {
+
+    margin-top: 40px;
+
+}
+
+.company-header {
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+.company-header img {
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 10px;
+    background: white;
+    padding: 5px;
+    object-fit: contain;
+
+}
+
+.company-header h3 {
+
+    margin: 0;
+    font-size: 22px;
+
+}
+
+.company-project-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 16px;
+
+}
+
+.company-project-card {
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: .3s;
+
+}
+
+.company-project-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .4);
+
+}
+
+.company-project-card h4 {
+
+    margin: 0 0 8px 0;
+    font-size: 16px;
+
+}
+
+.company-project-card p {
+
+    font-size: 13px;
+    color: #aab6d6;
+
 }

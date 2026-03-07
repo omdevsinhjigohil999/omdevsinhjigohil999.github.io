@@ -15,13 +15,29 @@ const portfolio = {
     skills: [
         "Unity",
         "C#",
-        "Three.js",
-        "WebGL",
-        "Blender",
-        "Unreal Engine",
-        "AR/VR Development",
-        "Game Design",
-        "Multiplayer Systems"
+        "REST APIs",
+        "Delegates",
+        "Socket.io",
+        "Metaverse",
+        "AR / VR",
+        "Occlusion",
+        "Unity UI Design",
+        "Unity Physics",
+        "Physics Simulation",
+        "UnityCloudCode",
+        "UnityCloudServices",
+        "Unity Authentication",
+        "Unity Economy",
+        "Game Center Login",
+        "Google Play Games Login",
+        "Multiplayer Basics",
+        "PUN",
+        "PUN2",
+        "Photon Fusion",
+        "Netcode for GameObjects (NGO)",
+        "Netcode for Entities (NFE)",
+        "Entity Component System (ECS)",
+        "Optimization",
     ],
 
     experience: [
@@ -33,7 +49,7 @@ const portfolio = {
             start: "Apr 2025",
             end: "Present",
             location: "Ahmedabad, India",
-            description: "Working on multiplayer gameplay systems and Unity cloud services."
+            description: "Working on multiplayer using NetCode For entities and ECS gameplay systems and Unity cloud services."
         },
 
         {
@@ -42,8 +58,8 @@ const portfolio = {
             role: "Unity Game & AR VR Developer",
             start: "Feb 2020",
             end: "Apr 2025",
-            location: "India",
-            description: "Developed games and AR/VR applications."
+            location: "Bhavnagar, India",
+            description: "Developed hypercasual games, Kindergarten games, Worked on several client projects and AR/VR applications."
         }
 
     ],
@@ -72,6 +88,5 @@ const portfolio = {
 
     contact: {
         email: "omdevsinhjigohil999@gmail.com"
-    }
-
+    },
 }
