@@ -11,17 +11,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
+/* ===============================
+   CENTRALIZED ASSET PATHS
+================================ */
+
+const COMPANY_LOGO_PATH = "assets/companies/"
+const PROJECT_LOGO_PATH = "assets/projects/"
+const VIDEO_PATH = "assets/videos/"
+
+/* ===============================
+   HERO
+================================ */
 
 function renderHero() {
     document.getElementById("hero-name").textContent = portfolio.hero.name
     document.getElementById("hero-role").textContent = portfolio.hero.role
 }
 
+/* ===============================
+   ABOUT
+================================ */
 
 function renderAbout() {
     document.getElementById("about-text").textContent = portfolio.about.description
 }
 
+/* ===============================
+   SKILLS
+================================ */
 
 function renderSkills() {
 
@@ -38,6 +55,11 @@ function renderSkills() {
     })
 
 }
+
+/* ===============================
+   EXPERIENCE
+================================ */
+
 function calculateDuration(start, end) {
 
     const startDate = new Date(start)
@@ -67,27 +89,32 @@ function renderExperience() {
         const duration = calculateDuration(job.start, job.end)
 
         const item = document.createElement("div")
-        const COMPANY_LOGO_PATH = "assets/companies/"
         item.className = "timeline-item"
+
+        let logoHTML = ""
+
+        if (job.logo) {
+            logoHTML = `<img src="${COMPANY_LOGO_PATH + job.logo}.jpg" class="company-logo">`
+        }
 
         item.innerHTML = `
 
-<div class="timeline-card">
+        <div class="timeline-card">
 
-<img src="${COMPANY_LOGO_PATH + job.logo}.jpg" class="company-logo">
+        ${logoHTML}
 
-<div class="job-info">
+        <div class="job-info">
 
-<h3>${job.role}</h3>
-<p><strong>${job.company} (${duration})</strong></p>
-<p>${job.start} - ${job.end}</p>
-<p>${job.location}</p>
-<p>${job.description}</p>
+        <h3>${job.role}</h3>
+        <p><strong>${job.company} (${duration})</strong></p>
+        <p>${job.start} - ${job.end}</p>
+        <p>${job.location}</p>
+        <p>${job.description}</p>
 
-</div>
+        </div>
 
-</div>
-`
+        </div>
+        `
 
         container.appendChild(item)
 
@@ -95,6 +122,9 @@ function renderExperience() {
 
 }
 
+/* ===============================
+   PROJECTS
+================================ */
 
 function renderProjects() {
 
@@ -106,60 +136,113 @@ function renderProjects() {
             .map(t => `<span class="tech">${t}</span>`)
             .join("")
 
-        let platforms = ""
+        let logoHTML = ""
 
-        if (project.platforms.android)
-            platforms += `<a href="${project.platforms.android}" target="_blank"><i class="fab fa-android"></i></a>`
+        if (project.logo) {
+            logoHTML = `
+            <img src="${PROJECT_LOGO_PATH + project.logo}.png" class="project-logo">
+            `
+        }
 
-        if (project.platforms.ios)
-            platforms += `<a href="${project.platforms.ios}" target="_blank"><i class="fab fa-apple"></i></a>`
+        /* VIDEO BUTTON */
 
-        if (project.platforms.steam)
-            platforms += `<a href="${project.platforms.steam}" target="_blank"><i class="fab fa-steam"></i></a>`
+        let actionHTML = ""
 
-        if (project.platforms.mac)
-            platforms += `<a href="${project.platforms.mac}" target="_blank"><i class="fab fa-apple"></i></a>`
+        if (project.video) {
 
-        if (project.platforms.epic)
-            platforms += `<a href="${project.platforms.epic}" target="_blank"><i class="fas fa-gamepad"></i></a>`
+            actionHTML = `
+            <button class="play-video-btn" onclick="openVideo('${VIDEO_PATH + project.video}.mp4')">
+                ▶ Play Video
+            </button>
+            `
+
+        } else if (project.platforms) {
+
+            if (project.platforms.android)
+                actionHTML += `<a href="${project.platforms.android}" target="_blank"><i class="fab fa-android"></i></a>`
+
+            if (project.platforms.ios)
+                actionHTML += `<a href="${project.platforms.ios}" target="_blank"><i class="fab fa-apple"></i></a>`
+
+            if (project.platforms.steam)
+                actionHTML += `<a href="${project.platforms.steam}" target="_blank"><i class="fab fa-steam"></i></a>`
+
+            if (project.platforms.mac)
+                actionHTML += `<a href="${project.platforms.mac}" target="_blank"><i class="fab fa-apple"></i></a>`
+
+            if (project.platforms.epic)
+                actionHTML += `<a href="${project.platforms.epic}" target="_blank"><i class="fas fa-gamepad"></i></a>`
+        }
 
         const card = document.createElement("div")
-        const PROJECT_LOGO_PATH = "assets/projects/"
         card.className = "timeline-item"
 
         card.innerHTML = `
 
-<div class="timeline-card project-card">
-<img src="${PROJECT_LOGO_PATH + project.logo}.png" class="project-logo">
+        <div class="timeline-card project-card">
 
-<div class="project-info">
+        ${logoHTML}
 
-<h3>${project.name}</h3>
-<p class="project-role">${project.role}</p>
+        <div class="project-info">
 
-<p>${project.description}</p>
+        <h3>${project.name}</h3>
 
-<div class="tech-stack">
-${techStack}
-</div>
+        <p class="project-role">${project.role}</p>
 
-${platforms ? `<div class="platform-icons">${platforms}</div>` : ""}
+        <p>${project.description}</p>
 
-</div>
+        <div class="tech-stack">
+        ${techStack}
+        </div>
 
-</div>
+        <div class="platform-icons">
+        ${actionHTML}
+        </div>
 
-`
+        </div>
+
+        </div>
+        `
 
         container.appendChild(card)
 
     })
+
 }
+function openVideo(videoSrc) {
+
+    const modal = document.getElementById("video-modal")
+    const video = document.getElementById("modal-video")
+
+    video.src = videoSrc
+    modal.style.display = "flex"
+
+    video.play()
+
+}
+
+function closeVideo() {
+
+    const modal = document.getElementById("video-modal")
+    const video = document.getElementById("modal-video")
+
+    video.pause()
+    video.src = ""
+
+    modal.style.display = "none"
+
+}
+/* ===============================
+   CONTACT
+================================ */
 
 function renderContact() {
     document.getElementById("contact-email").textContent = portfolio.contact.email
 }
 
+/* ===============================
+   TIMELINE ANIMATION
+================================ */
 
 function animateTimeline() {
 

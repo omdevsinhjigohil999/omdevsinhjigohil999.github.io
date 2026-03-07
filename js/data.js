@@ -70,6 +70,7 @@ const portfolio = {
         {
             name: "ONE MAP: Battle Royale Online",
             logo: "onemap",
+            video: "",
             role: "Gameplay Developer, UI Designer",
             description: "Real-time multiplayer battle game using Unity Netcode and ECS architecture.",
             technologies: ["Unity", "Netcode for Entities", "ECS", "UnityCloudServices", "UnityCloudCode", "Unity Authentication", "Unity Economy"],
@@ -85,6 +86,7 @@ const portfolio = {
         {
             name: "Bal Hanuman - Adventure Game",
             logo: "balhanuman",
+            video: "",
             role: "Gameplay Developer, Bug Fixer",
             description: "Mobile platformer game with variety of levels.",
             technologies: ["Unity"],
@@ -100,6 +102,7 @@ const portfolio = {
         {
             name: "Hurricane.io",
             logo: "hurracain.io",
+            video: "",
             role: "Gameplay Developer, Bug Fixer",
             description: "An online strategy game where you are the hurricane. You'll start as a tiny tropical storm, but by absorbing clouds you can get massive in no time.",
             technologies: ["Unity", "GoogleMobileAds", "PUN2"],
@@ -115,6 +118,7 @@ const portfolio = {
         {
             name: "TheCryptoRace",
             logo: "thecryptorace",
+            video: "",
             role: "Gameplay Developer, GamePlay Designer, UI Designer, VFXDesigner",
             description: "A multiplayer procedural racing game, Game starts after 2 player is joined, Race till TIME OVER, Get point on every step, If you dont dodge moving cars then points will cutoff, Rejoin game with same player, Player win who have more score not who have covered more distance so play carefully by dodging onstacles.",
             technologies: ["Unity", "PhotonFusion", "ProceduralEnvironmentGeneration"],
@@ -130,6 +134,7 @@ const portfolio = {
         {
             name: "SoyGame",
             logo: "ussoy",
+            video:"",
             role: "Gameplay Developer, Bug Fixer",
             description: "A procedural farming game where you need to complete given tasks that improves XP, need to unlock and upgrade machines, took part in various quiz.",
             technologies: ["Unity", "Addressables", "Firebase", "FirebaseDatabase"],
@@ -145,6 +150,7 @@ const portfolio = {
         {
             name: "Zeeno || DR.Green Thumb Society",
             logo: "zeeno",
+            video:"",
             role: "Gameplay Developer",
             description: "An online e-commerce like hurbs buying platform, purchase hurbs in 3D environment, Add to cart, Add to favourites, Stock management using api, View order, View card, Chat with shop executive, Raise a support ticket and many more.",
             technologies: ["Unity", "Addressables", "REST-Apis", "Socket.io", "Bakery - GPU Lightmapper", "Firebase", "FirebaseDatabase", "AR-Core"],
@@ -160,6 +166,7 @@ const portfolio = {
         {
             name: "KarmaTheGameOfDestiny",
             logo: "karma",
+            video:"",
             role: "Gameplay Developer, Bug Fixer",
             description: "Mobile game where you can see each others avatars, share things like image, audio, video with other player, chat with other players, get ingame emails, see perticluar things in AR.",
             technologies: ["Unity", "Addressables", "REST-Apis", "Firebase", "FirebaseDatabase", "AR-Core"],
@@ -175,6 +182,7 @@ const portfolio = {
         {
             name: "Preschool Learning Kids Games",
             logo: "preschoollearning",
+            video:"",
             role: "Gameplay Programmer, Designed VFX using particle system, Created multiple categories, Added utilities to create data driven programming",
             description: "Mobile hyper casual runner with optimized physics and smooth controls.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem", "Scriptable Object", "Object based programming"],
@@ -190,6 +198,7 @@ const portfolio = {
         {
             name: "Wave Dash",
             logo: "wavedash",
+            video:"wavedash",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple mobile hyper casual game with easy to play mechanics based sin wave.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -220,6 +229,7 @@ const portfolio = {
         {
             name: "Fun Math Games: Kids Math Game",
             logo: "funmathgame",
+            video:"",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple educational game to learn mathematics.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem"],
@@ -235,6 +245,7 @@ const portfolio = {
         {
             name: "Call Santa Claus: Prank Call",
             logo: "callsanta",
+            video:"",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A fake call santa game with satisfying color filling game.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem"],
@@ -250,6 +261,7 @@ const portfolio = {
         {
             name: "CarParking",
             logo: "carparking",
+            video:"",
             role: "Gameplay Programmer, Environment Designer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you need to complete level by parking your car in related place",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem", "ScriptableObject"],
@@ -265,6 +277,7 @@ const portfolio = {
         {
             name: "Hexa Sort Puzzle",
             logo: "hexasortpuzzle",
+            video:"",
             role: "Gameplay Programmer, Reskin Game",
             description: "A simple hyper casual hexa-sort merging puzzle.",
             technologies: ["Unity"],
@@ -280,6 +293,7 @@ const portfolio = {
         {
             name: "CircleDodge",
             logo: "circledodge",
+            video:"circledodge",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you need to dodge obestacle.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -295,6 +309,7 @@ const portfolio = {
         {
             name: "FlipJump",
             logo: "flipjump",
+            video:"flipjump",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you jump to platforms.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -310,6 +325,7 @@ const portfolio = {
         {
             name: "ARFace Recognition",
             logo: "arface",
+            video:"",
             role: "Gameplay Programmer, Ui Designer",
             description: "A facial expression recognition app using unity's AR.",
             technologies: ["Unity", "AR", "OpenCV"],
@@ -325,6 +341,7 @@ const portfolio = {
         {
             name: "Provispo",
             logo: "provispo",
+            video:"",
             role: "Gameplay Programmer, Ui Designer",
             description: "A web based camera feed showcasing project",
             technologies: ["Unity", "UnityWEBGL"],
