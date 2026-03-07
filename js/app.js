@@ -67,13 +67,14 @@ function renderExperience() {
         const duration = calculateDuration(job.start, job.end)
 
         const item = document.createElement("div")
+        const COMPANY_LOGO_PATH = "assets/companies/"
         item.className = "timeline-item"
 
         item.innerHTML = `
 
 <div class="timeline-card">
 
-<img src="${job.logo}" class="company-logo">
+<img src="${COMPANY_LOGO_PATH + job.logo}.jpg" class="company-logo">
 
 <div class="job-info">
 
@@ -123,12 +124,13 @@ function renderProjects() {
             platforms += `<a href="${project.platforms.epic}" target="_blank"><i class="fas fa-gamepad"></i></a>`
 
         const card = document.createElement("div")
+        const PROJECT_LOGO_PATH = "assets/projects/"
         card.className = "timeline-item"
 
         card.innerHTML = `
 
 <div class="timeline-card project-card">
-<img src="${project.logo}" class="project-logo">
+<img src="${PROJECT_LOGO_PATH + project.logo}.png" class="project-logo">
 
 <div class="project-info">
 

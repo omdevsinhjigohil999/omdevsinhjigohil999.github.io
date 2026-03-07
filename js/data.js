@@ -45,7 +45,7 @@ const portfolio = {
 
         {
             company: "300Mind",
-            logo: "assets/companies/300mind.jpg",
+            logo: "300mind",
             role: "Unity Game Developer",
             start: "Apr 2025",
             end: "Present",
@@ -55,7 +55,7 @@ const portfolio = {
 
         {
             company: "StreakByte",
-            logo: "assets/companies/streakbyte.jpg",
+            logo: "streakbyte",
             role: "Unity Game & AR VR Developer",
             start: "Feb 2020",
             end: "Apr 2025",
@@ -69,7 +69,7 @@ const portfolio = {
 
         {
             name: "ONE MAP: Battle Royale Online",
-            logo: "assets/projects/onemap.png",
+            logo: "onemap",
             role: "Gameplay Developer, UI Designer",
             description: "Real-time multiplayer battle game using Unity Netcode and ECS architecture.",
             technologies: ["Unity", "Netcode for Entities", "ECS", "UnityCloudServices", "UnityCloudCode", "Unity Authentication", "Unity Economy"],
@@ -84,7 +84,7 @@ const portfolio = {
 
         {
             name: "Bal Hanuman - Adventure Game",
-            logo: "assets/projects/balhanuman.png",
+            logo: "balhanuman",
             role: "Gameplay Developer, Bug Fixer",
             description: "Mobile platformer game with variety of levels.",
             technologies: ["Unity"],
@@ -99,7 +99,7 @@ const portfolio = {
 
         {
             name: "Hurricane.io",
-            logo: "assets/projects/hurracain.io.png",
+            logo: "hurracain.io",
             role: "Gameplay Developer, Bug Fixer",
             description: "An online strategy game where you are the hurricane. You'll start as a tiny tropical storm, but by absorbing clouds you can get massive in no time.",
             technologies: ["Unity", "GoogleMobileAds", "PUN2"],
@@ -114,7 +114,7 @@ const portfolio = {
 
         {
             name: "TheCryptoRace",
-            logo: "assets/projects/thecryptorace.png",
+            logo: "thecryptorace",
             role: "Gameplay Developer, GamePlay Designer, UI Designer, VFXDesigner",
             description: "A multiplayer procedural racing game, Game starts after 2 player is joined, Race till TIME OVER, Get point on every step, If you dont dodge moving cars then points will cutoff, Rejoin game with same player, Player win who have more score not who have covered more distance so play carefully by dodging onstacles.",
             technologies: ["Unity", "PhotonFusion", "ProceduralEnvironmentGeneration"],
@@ -129,7 +129,7 @@ const portfolio = {
 
         {
             name: "SoyGame",
-            logo: "assets/projects/ussoy.png",
+            logo: "ussoy",
             role: "Gameplay Developer, Bug Fixer",
             description: "A procedural farming game where you need to complete given tasks that improves XP, need to unlock and upgrade machines, took part in various quiz.",
             technologies: ["Unity", "Addressables", "Firebase", "FirebaseDatabase"],
@@ -144,7 +144,7 @@ const portfolio = {
 
         {
             name: "Zeeno || DR.Green Thumb Society",
-            logo: "assets/projects/zeeno.png",
+            logo: "zeeno",
             role: "Gameplay Developer",
             description: "An online e-commerce like hurbs buying platform, purchase hurbs in 3D environment, Add to cart, Add to favourites, Stock management using api, View order, View card, Chat with shop executive, Raise a support ticket and many more.",
             technologies: ["Unity", "Addressables", "REST-Apis", "Socket.io", "Bakery - GPU Lightmapper", "Firebase", "FirebaseDatabase", "AR-Core"],
@@ -159,7 +159,7 @@ const portfolio = {
 
         {
             name: "KarmaTheGameOfDestiny",
-            logo: "assets/projects/karma.png",
+            logo: "karma",
             role: "Gameplay Developer, Bug Fixer",
             description: "Mobile game where you can see each others avatars, share things like image, audio, video with other player, chat with other players, get ingame emails, see perticluar things in AR.",
             technologies: ["Unity", "Addressables", "REST-Apis", "Firebase", "FirebaseDatabase", "AR-Core"],
@@ -174,7 +174,7 @@ const portfolio = {
 
         {
             name: "Preschool Learning Kids Games",
-            logo: "assets/projects/preschoollearning.png",
+            logo: "preschoollearning",
             role: "Gameplay Programmer, Designed VFX using particle system, Created multiple categories, Added utilities to create data driven programming",
             description: "Mobile hyper casual runner with optimized physics and smooth controls.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem", "Scriptable Object", "Object based programming"],
@@ -189,7 +189,7 @@ const portfolio = {
 
         {
             name: "Wave Dash",
-            logo: "assets/projects/wavedash.png",
+            logo: "wavedash",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple mobile hyper casual game with easy to play mechanics based sin wave.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -204,7 +204,7 @@ const portfolio = {
 
         {
             name: "Tricky Puzzles: Find Match",
-            logo: "assets/projects/trickypuzzles.png",
+            logo: "trickypuzzles",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "The ultimate brain test and matching puzzle game.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem", "ScriptableObject"],
@@ -219,7 +219,7 @@ const portfolio = {
 
         {
             name: "Fun Math Games: Kids Math Game",
-            logo: "assets/projects/funmathgame.png",
+            logo: "funmathgame",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple educational game to learn mathematics.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem"],
@@ -234,7 +234,7 @@ const portfolio = {
 
         {
             name: "Call Santa Claus: Prank Call",
-            logo: "assets/projects/callsanta.png",
+            logo: "callsanta",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A fake call santa game with satisfying color filling game.",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem"],
@@ -249,7 +249,7 @@ const portfolio = {
 
         {
             name: "CarParking",
-            logo: "assets/projects/carparking.png",
+            logo: "carparking",
             role: "Gameplay Programmer, Environment Designer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you need to complete level by parking your car in related place",
             technologies: ["Unity", "FMOD", "GoogleMobileAds", "ParticleSystem", "ScriptableObject"],
@@ -264,7 +264,7 @@ const portfolio = {
 
         {
             name: "Hexa Sort Puzzle",
-            logo: "assets/projects/hexasortpuzzle.png",
+            logo: "hexasortpuzzle",
             role: "Gameplay Programmer, Reskin Game",
             description: "A simple hyper casual hexa-sort merging puzzle.",
             technologies: ["Unity"],
@@ -279,7 +279,7 @@ const portfolio = {
 
         {
             name: "CircleDodge",
-            logo: "assets/projects/circledodge.png",
+            logo: "circledodge",
             role: "Gameplay Programmer, Ui Designer, Designed VFX using particle system",
             description: "A simple hyper casual game where you need to dodge obestacle.",
             technologies: ["Unity", "FMOD", "ParticleSystem"],
@@ -324,7 +324,7 @@ const portfolio = {
 
         {
             name: "Provispo",
-            logo: "assets/projects/provispo.png",
+            logo: "provispo",
             role: "Gameplay Programmer, Ui Designer",
             description: "A web based camera feed showcasing project",
             technologies: ["Unity", "UnityWEBGL"],
