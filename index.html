@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Game Developer Portfolio</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -20,58 +21,64 @@
 
     <div class="container">
 
-        <section class="hero">
-            <h1 id="hero-name"></h1>
-            <p id="hero-role"></p>
-        </section>
+        <div class="layout">
 
-        <section class="about glass">
-            <h2>About</h2>
-            <p id="about-text"></p>
-        </section>
+            <!-- LEFT MAIN CONTENT -->
 
-        <section class="experience">
-            <h2>Experience</h2>
-            <div class="timeline" id="timeline"></div>
-        </section>
+            <div class="main">
 
-        <!-- <section class="projects glass">
-            <h2>Projects</h2>
+                <section class="hero">
+                    <h1 id="hero-name"></h1>
+                    <p id="hero-role"></p>
+                </section>
 
-            <div class="projects">
-                <div class="project-track" id="project-track"></div>
-            </div>
+                <section class="about glass">
+                    <h2>About</h2>
+                    <p id="about-text"></p>
+                </section>
 
-        </section> -->
+                <section class="experience">
+                    <h2>Experience</h2>
+                    <div class="timeline" id="timeline"></div>
+                </section>
 
-        <section class="projects">
-            <h2>Projects</h2>
+                <section class="projects">
+                    <h2>Projects</h2>
+                    <div class="timeline" id="project-timeline"></div>
+                </section>
 
-            <div class="timeline" id="project-timeline"></div>
-
-        </section>
-
-        <section class="skills glass">
-            <h2>Skills</h2>
-            <div id="skills-container" class="skills-grid"></div>
-        </section>
-
-        <section class="contact glass">
-            <h2>Contact</h2>
-            <p id="contact-email"></p>
-        </section>
-
-        <div id="video-modal" class="video-modal">
-
-            <div class="video-container">
-
-                <span class="close-video" onclick="closeVideo()">✕</span>
-
-                <video id="modal-video" controls></video>
+                <section class="contact glass">
+                    <h2>Contact</h2>
+                    <p id="contact-email"></p>
+                </section>
 
             </div>
+
+            <!-- RIGHT SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <section class="skills glass">
+                    <h2>Skills</h2>
+                    <div id="skills-container" class="skills-grid"></div>
+                </section>
+
+            </aside>
 
         </div>
+
+    </div>
+
+    <div id="video-modal" class="video-modal">
+
+        <div class="video-container">
+
+            <span class="close-video" onclick="closeVideo()">✕</span>
+
+            <video id="modal-video" controls></video>
+
+        </div>
+
     </div>
 
     <script src="js/data.js"></script>
