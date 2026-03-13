@@ -231,7 +231,39 @@ function closeVideo() {
 
     modal.style.display = "none"
 
+} function openVideo(videoSrc) {
+
+    const modal = document.getElementById("video-modal")
+    const video = document.getElementById("modal-video")
+
+    video.src = videoSrc
+    modal.style.display = "flex"
+
+    video.currentTime = 0
+    video.play()
 }
+
+function closeVideo() {
+
+    const modal = document.getElementById("video-modal")
+    const video = document.getElementById("modal-video")
+
+    video.pause()
+    video.currentTime = 0
+    video.src = ""
+
+    modal.style.display = "none"
+}
+
+/* CLOSE WHEN CLICK OUTSIDE VIDEO */
+
+document.getElementById("video-modal").addEventListener("click", function (e) {
+
+    if (e.target.id === "video-modal") {
+        closeVideo()
+    }
+
+})
 /* ===============================
    CONTACT
 ================================ */
