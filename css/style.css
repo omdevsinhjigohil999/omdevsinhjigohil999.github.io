@@ -144,12 +144,17 @@ body {
     content: "";
     position: absolute;
     left: -21px;
-    top: 14px;
+    top: 16px;
+    /* aligns with card padding */
     width: 10px;
     height: 10px;
     background: #7dd3fc;
     border-radius: 50%;
     box-shadow: 0 0 8px #7dd3fc;
+}
+
+.timeline::before {
+    left: 18px;
 }
 
 /* CARD */
