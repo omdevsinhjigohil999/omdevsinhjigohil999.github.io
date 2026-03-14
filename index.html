@@ -2,82 +2,160 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hariomsinh Gohil | Portfolio</title>
+    <meta name="description" content="Game Developer Portfolio of Hariomsinh Gohil" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Game Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-
 </head>
 
 <body>
-
     <canvas id="bg"></canvas>
 
-    <div class="container">
+    <div class="site-shell">
+        <main class="dashboard">
+            <aside class="sidebar-left">
+                <section class="profile-card card">
+                    <div class="profile-cover"></div>
 
-        <section class="hero">
-            <h1 id="hero-name"></h1>
-            <p id="hero-role"></p>
-        </section>
+                    <div class="profile-content">
+                        <div class="profile-avatar-container">
+                            <img id="profile-img" src="assets/profile.jpg" alt="Hariomsinh Gohil"
+                                onerror="this.style.opacity='0'">
+                        </div>
 
-        <section class="about glass">
-            <h2>About</h2>
-            <p id="about-text"></p>
-        </section>
+                        <h2 id="hero-name"></h2>
+                        <p class="profile-role" id="hero-role"></p>
+                        <p class="profile-location" id="hero-location"></p>
+                        <div class="profile-company" id="hero-company"></div>
 
-        <section class="experience">
-            <h2>Experience</h2>
-            <div class="timeline" id="timeline"></div>
-        </section>
+                        <div class="profile-actions">
+                            <a id="hero-linkedin" class="btn btn-primary" href="#" target="_blank"
+                                rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i> Connect
+                            </a>
+                            <a class="btn btn-secondary" href="#projects">
+                                Projects
+                            </a>
+                        </div>
+                    </div>
+                </section>
 
-        <!-- <section class="projects glass">
-            <h2>Projects</h2>
+                <section class="stats-card card">
+                    <div class="mini-stat">
+                        <span class="mini-stat-label">Years of Experience</span>
+                        <strong id="stat-experience" class="stat-value">0+</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-stat-label">Projects Completed</span>
+                        <strong id="stat-projects" class="stat-value">0</strong>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-stat-label">Endorsed Skills</span>
+                        <strong id="stat-skills" class="stat-value">0</strong>
+                    </div>
+                </section>
 
-            <div class="projects">
-                <div class="project-track" id="project-track"></div>
-            </div>
+                <section class="contact-card card">
+                    <h3>Contact Info</h3>
+                    <div class="contact-row">
+                        <a class="contact-link" id="contact-email" href="#">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span id="contact-email-text" class="contact-email-text"></span>
+                        </a>
+                        <button class="copy-btn" id="copy-email-btn" title="Copy Email">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                    <div class="contact-row">
+                        <div class="contact-link">
+                            <i class="fa-solid fa-phone"></i>
+                            <span id="contact-phone-text"></span>
+                        </div>
+                        <button class="copy-btn" id="copy-phone-btn" title="Copy Phone">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </section>
+            </aside>
 
-        </section> -->
+            <section class="main-feed">
+                <section id="about" class="composer-card card">
+                    <div class="section-head">
+                        <h2>About</h2>
+                    </div>
+                    <div class="about-content">
+                        <p id="about-text"></p>
+                        <div class="hero-highlights" id="hero-highlights"></div>
+                    </div>
+                </section>
 
-        <section class="projects">
-            <h2>Projects</h2>
+                <section id="experience" class="feed-card card">
+                    <div class="section-head">
+                        <h2>Experience</h2>
+                    </div>
+                    <div class="timeline" id="timeline"></div>
+                </section>
 
-            <div class="timeline" id="project-timeline"></div>
+                <section id="projects" class="feed-card card">
+                    <div class="section-head">
+                        <h2>Featured Projects</h2>
+                    </div>
+                    <div class="projects-grid" id="projects-grid"></div>
+                </section>
+            </section>
 
-        </section>
+            <aside class="sidebar-right">
+                <section class="card">
+                    <div class="section-head small">
+                        <h2>Skills</h2>
+                    </div>
+                    <div id="skills-container" class="skills-grid"></div>
+                </section>
 
-        <section class="skills glass">
-            <h2>Skills</h2>
-            <div id="skills-container" class="skills-grid"></div>
-        </section>
+                <section class="card">
+                    <div class="section-head small">
+                        <h2>What I Do</h2>
+                    </div>
+                    <div class="focus-list" id="focus-list">
+                        <div class="focus-item">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <div class="focus-text">Gameplay Systems</div>
+                        </div>
+                        <div class="focus-item">
+                            <i class="fa-solid fa-users"></i>
+                            <div class="focus-text">Multiplayer Networking</div>
+                        </div>
+                        <div class="focus-item">
+                            <i class="fa-solid fa-vr-cardboard"></i>
+                            <div class="focus-text">AR / VR Experiences</div>
+                        </div>
+                        <div class="focus-item">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div class="focus-text">Optimization & Polish</div>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+        </main>
+    </div>
 
-        <section class="contact glass">
-            <h2>Contact</h2>
-            <p id="contact-email"></p>
-        </section>
-
-        <div id="video-modal" class="video-modal">
-
-            <div class="video-container">
-
-                <span class="close-video" onclick="closeVideo()">✕</span>
-
-                <video id="modal-video" controls></video>
-
-            </div>
-
+    <div id="video-modal" class="video-modal">
+        <div class="video-container">
+            <button class="close-video" id="close-video-btn" aria-label="Close video">✕</button>
+            <video id="modal-video" controls playsinline></video>
         </div>
     </div>
+
+    <div id="toast" class="toast">Copied to clipboard!</div>
 
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
     <script src="js/three-scene.js"></script>
-
 </body>
 
 </html>
