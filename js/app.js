@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProjects()
     setupVideoModal()
     setupCopyButtons()
+    setupScrollSwitch()
 })
 
 const COMPANY_LOGO_PATH = "assets/companies/"
@@ -19,6 +20,7 @@ function safeText(value, fallback = "") {
 
 function calculateTotalExperienceYears(experience) {
     if (!experience || !experience.length) return 0
+
     let totalMonths = 0
 
     experience.forEach(job => {
@@ -29,9 +31,11 @@ function calculateTotalExperienceYears(experience) {
             const months =
                 (endDate.getFullYear() - startDate.getFullYear()) * 12 +
                 (endDate.getMonth() - startDate.getMonth())
+
             totalMonths += Math.max(months, 0)
         }
     })
+
     return Math.max(1, Math.floor(totalMonths / 12))
 }
 
@@ -88,7 +92,6 @@ function renderAbout() {
         .join("")
 }
 
-// Inside renderStats() function:
 function renderStats() {
     document.getElementById("stat-experience").textContent =
         `${calculateTotalExperienceYears(portfolio.experience)}+`
@@ -96,55 +99,39 @@ function renderStats() {
     document.getElementById("stat-projects").textContent = portfolio.projects?.length || 0
     document.getElementById("stat-skills").textContent = portfolio.skills?.length || 0
 
-    // Email Rendering
     const email = portfolio.contact?.email || ""
     document.getElementById("contact-email-text").textContent = email
 
-    // Phone Rendering
     const phone = portfolio.contact?.phone || ""
     document.getElementById("contact-phone-text").textContent = phone
 
-    // LinkedIn Rendering
     const linkedin = portfolio.hero?.linkedin || "#"
-    const linkedinLink = document.getElementById("contact-linkedin-link");
-    if (linkedinLink) linkedinLink.href = linkedin;
+    const linkedinLink = document.getElementById("contact-linkedin-link")
+    if (linkedinLink) linkedinLink.href = linkedin
 }
 
-// Inside setupCopyButtons() function:
 function setupCopyButtons() {
     const emailBtn = document.getElementById("copy-email-btn")
     const phoneBtn = document.getElementById("copy-phone-btn")
 
     if (emailBtn) {
         emailBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevents tooltip from closing immediately
-            copyToClipboard(portfolio.contact.email, "Email copied!");
+            e.stopPropagation()
+            copyToClipboard(portfolio.contact?.email, "Email copied!")
         })
     }
 
     if (phoneBtn) {
         phoneBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            copyToClipboard(portfolio.contact.phone, "Phone number copied!");
+            e.stopPropagation()
+            copyToClipboard(portfolio.contact?.phone, "Phone number copied!")
         })
     }
 }
 
-function setupCopyButtons() {
-    const emailBtn = document.getElementById("copy-email-btn")
-    const phoneBtn = document.getElementById("copy-phone-btn")
-
-    emailBtn.addEventListener("click", () => {
-        copyToClipboard(portfolio.contact.email, "Email copied!")
-    })
-
-    phoneBtn.addEventListener("click", () => {
-        copyToClipboard(portfolio.contact.phone, "Phone number copied!")
-    })
-}
-
 function copyToClipboard(text, message) {
     if (!text) return
+
     navigator.clipboard.writeText(text).then(() => {
         showToast(message)
     })
@@ -194,17 +181,30 @@ function renderExperience() {
                 <p class="job-description">${job.description}</p>
             </div>
         `
+
             container.appendChild(item)
         })
 }
 
 function getPlatformLinks(platforms = {}) {
     const items = []
-    if (platforms.android) items.push(`<a class="project-action" href="${platforms.android}" target="_blank"><i class="fab fa-google-play"></i> Android</a>`)
-    if (platforms.ios) items.push(`<a class="project-action" href="${platforms.ios}" target="_blank"><i class="fab fa-apple"></i> iOS</a>`)
-    if (platforms.steam) items.push(`<a class="project-action" href="${platforms.steam}" target="_blank"><i class="fab fa-steam"></i> Steam</a>`)
-    if (platforms.mac) items.push(`<a class="project-action" href="${platforms.mac}" target="_blank"><i class="fa-solid fa-laptop"></i> Mac</a>`)
-    if (platforms.epic) items.push(`<a class="project-action" href="${platforms.epic}" target="_blank"><i class="fa-solid fa-gamepad"></i> Epic</a>`)
+
+    if (platforms.android) {
+        items.push(`<a class="project-action" href="${platforms.android}" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play"></i> Android</a>`)
+    }
+    if (platforms.ios) {
+        items.push(`<a class="project-action" href="${platforms.ios}" target="_blank" rel="noopener noreferrer"><i class="fab fa-apple"></i> iOS</a>`)
+    }
+    if (platforms.steam) {
+        items.push(`<a class="project-action" href="${platforms.steam}" target="_blank" rel="noopener noreferrer"><i class="fab fa-steam"></i> Steam</a>`)
+    }
+    if (platforms.mac) {
+        items.push(`<a class="project-action" href="${platforms.mac}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-laptop"></i> Mac</a>`)
+    }
+    if (platforms.epic) {
+        items.push(`<a class="project-action" href="${platforms.epic}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-gamepad"></i> Epic</a>`)
+    }
+
     return items.join("")
 }
 
@@ -228,9 +228,9 @@ function renderProjects() {
 
             if (project.video) {
                 actionsHTML = `
-            <button class="project-action play-video-btn" data-video="${VIDEO_PATH + project.video}.mp4">
-                <i class="fa-solid fa-circle-play"></i> Watch Demo
-            </button>
+                <button class="project-action play-video-btn" data-video="${VIDEO_PATH + project.video}.mp4" type="button">
+                    <i class="fa-solid fa-circle-play"></i> Watch Demo
+                </button>
             ` + actionsHTML
             }
 
@@ -250,6 +250,7 @@ function renderProjects() {
                 </div>
             </div>
         `
+
             container.appendChild(card)
         })
 
@@ -268,15 +269,23 @@ function bindVideoButtons() {
 function setupVideoModal() {
     const modal = document.getElementById("video-modal")
     const closeBtn = document.getElementById("close-video-btn")
+
     closeBtn.addEventListener("click", closeVideo)
-    modal.addEventListener("click", (e) => { if (e.target === modal) closeVideo() })
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeVideo() })
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeVideo()
+    })
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeVideo()
+    })
 }
 
 function openVideo(videoSrc) {
     const modal = document.getElementById("video-modal")
     const video = document.getElementById("modal-video")
+
     if (!videoSrc) return
+
     video.src = videoSrc
     modal.classList.add("active")
     video.play().catch(() => { })
@@ -285,8 +294,104 @@ function openVideo(videoSrc) {
 function closeVideo() {
     const modal = document.getElementById("video-modal")
     const video = document.getElementById("modal-video")
+
     video.pause()
     video.currentTime = 0
     video.src = ""
     modal.classList.remove("active")
+}
+
+function setupScrollSwitch() {
+    const dashboard = document.getElementById("dashboard")
+    const mainFeed = document.getElementById("main-feed")
+    const triggerCard = document.getElementById("what-i-do-card")
+
+    if (!dashboard || !mainFeed || !triggerCard) return
+
+    let isLocked = false
+
+    function isDesktop() {
+        return window.innerWidth > 992
+    }
+
+    function getTriggerPoint() {
+        const rect = triggerCard.getBoundingClientRect()
+        return window.scrollY + rect.top - 32
+    }
+
+    function lockMainFeedScroll() {
+        if (!isDesktop()) return
+        if (isLocked) return
+
+        isLocked = true
+        dashboard.classList.add("pin-scroll-zone")
+        document.body.classList.add("lock-main-scroll")
+    }
+
+    function unlockMainFeedScroll() {
+        if (!isLocked) return
+
+        isLocked = false
+        dashboard.classList.remove("pin-scroll-zone")
+        document.body.classList.remove("lock-main-scroll")
+    }
+
+    function handlePageScroll() {
+        if (!isDesktop()) {
+            unlockMainFeedScroll()
+            mainFeed.scrollTop = 0
+            return
+        }
+
+        const triggerPoint = getTriggerPoint()
+
+        if (window.scrollY >= triggerPoint) {
+            window.scrollTo(0, triggerPoint)
+            lockMainFeedScroll()
+        } else {
+            unlockMainFeedScroll()
+        }
+    }
+
+    function handleMainFeedWheel(e) {
+        if (!isLocked || !isDesktop()) return
+
+        const isScrollingDown = e.deltaY > 0
+        const isAtTop = mainFeed.scrollTop <= 0
+        const isAtBottom =
+            Math.ceil(mainFeed.scrollTop + mainFeed.clientHeight) >= mainFeed.scrollHeight
+
+        if (isScrollingDown && !isAtBottom) {
+            e.preventDefault()
+            mainFeed.scrollTop += e.deltaY
+            return
+        }
+
+        if (!isScrollingDown && !isAtTop) {
+            e.preventDefault()
+            mainFeed.scrollTop += e.deltaY
+            return
+        }
+
+        if (!isScrollingDown && isAtTop) {
+            unlockMainFeedScroll()
+            return
+        }
+
+        if (isScrollingDown && isAtBottom) {
+            unlockMainFeedScroll()
+            window.scrollBy(0, 2)
+        }
+    }
+
+    function handleTouchScroll() {
+        if (!isDesktop()) {
+            unlockMainFeedScroll()
+            mainFeed.scrollTop = 0
+        }
+    }
+
+    window.addEventListener("scroll", handlePageScroll, { passive: true })
+    window.addEventListener("resize", handleTouchScroll)
+    mainFeed.addEventListener("wheel", handleMainFeedWheel, { passive: false })
 }
