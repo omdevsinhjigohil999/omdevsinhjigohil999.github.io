@@ -1,119 +1,297 @@
 const canvas = document.getElementById("bg")
 
+/* SCENE */
+
 const scene = new THREE.Scene()
 
+/* CAMERA */
+
 const camera = new THREE.PerspectiveCamera(
-    60,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+45,
+window.innerWidth/window.innerHeight,
+0.1,
+2000
 )
-camera.position.z = 18
+
+camera.position.set(0,1.5,8)
+
+/* RENDERER */
 
 const renderer = new THREE.WebGLRenderer({
-    canvas,
-    alpha: true,
-    antialias: true
+canvas,
+antialias:true,
+alpha:true
 })
 
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2))
+renderer.setSize(window.innerWidth,window.innerHeight)
 
-/* LIGHTS */
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.45)
-scene.add(ambientLight)
 
-const pointLight1 = new THREE.PointLight(0x6ea8ff, 1.6, 120)
-pointLight1.position.set(10, 8, 12)
-scene.add(pointLight1)
+/* TEXTURES */
 
-const pointLight2 = new THREE.PointLight(0x8f6bff, 1.4, 120)
-pointLight2.position.set(-12, -6, 10)
-scene.add(pointLight2)
+const loader = new THREE.TextureLoader()
 
-/* MAIN WIREFRAME OBJECT */
-const heroGeometry = new THREE.IcosahedronGeometry(3.2, 1)
-const heroMaterial = new THREE.MeshStandardMaterial({
-    color: 0x79a8ff,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.42
+const earthDay = loader.load("./textures/earth_day.jpg")
+const earthNight = loader.load("./textures/earth_night.jpg")
+const earthCloud = loader.load("./textures/earth_clouds.jpg")
+const earthBump = loader.load("./textures/earth_bump.jpg")
+
+const milkyWay = loader.load("./textures/stars.jpg")
+
+const flare0 = loader.load("https://threejs.org/examples/textures/lensflare/lensflare0.png")
+const flare3 = loader.load("https://threejs.org/examples/textures/lensflare/lensflare3.png")
+
+
+/* MILKY WAY SKY */
+
+const skyGeo = new THREE.SphereGeometry(500,64,64)
+
+const skyMat = new THREE.MeshBasicMaterial({
+map:milkyWay,
+side:THREE.BackSide
 })
-const heroMesh = new THREE.Mesh(heroGeometry, heroMaterial)
-heroMesh.position.set(5.5, 2.5, -2)
-scene.add(heroMesh)
 
-/* SECONDARY TORUS */
-const torusGeometry = new THREE.TorusGeometry(5.8, 0.08, 16, 140)
-const torusMaterial = new THREE.MeshStandardMaterial({
-    color: 0x9a7dff,
-    transparent: true,
-    opacity: 0.35
+const sky = new THREE.Mesh(skyGeo,skyMat)
+scene.add(sky)
+
+
+/* LIGHTING (SUN) */
+
+const sunLight = new THREE.DirectionalLight(0xffffff,3)
+sunLight.position.set(10,2,5)
+scene.add(sunLight)
+
+const ambient = new THREE.AmbientLight(0x223344,0.25)
+scene.add(ambient)
+
+
+/* SUN LENS FLARE */
+
+const flareGroup = new THREE.Group()
+
+const spriteMat = new THREE.SpriteMaterial({
+map:flare0,
+transparent:true,
+blending:THREE.AdditiveBlending
 })
-const torus = new THREE.Mesh(torusGeometry, torusMaterial)
-torus.position.set(-7, -3, -8)
-torus.rotation.x = 1.1
-scene.add(torus)
 
-/* FLOATING PARTICLES */
-const particleCount = 900
-const particleGeometry = new THREE.BufferGeometry()
-const positions = new Float32Array(particleCount * 3)
+const sprite = new THREE.Sprite(spriteMat)
+sprite.scale.set(4,4,1)
 
-for (let i = 0; i < particleCount * 3; i += 3) {
-    positions[i] = (Math.random() - 0.5) * 70
-    positions[i + 1] = (Math.random() - 0.5) * 50
-    positions[i + 2] = (Math.random() - 0.5) * 50
+flareGroup.add(sprite)
+
+flareGroup.position.copy(sunLight.position).multiplyScalar(20)
+
+scene.add(flareGroup)
+
+
+/* EARTH */
+
+const earthGroup = new THREE.Group()
+scene.add(earthGroup)
+
+const earthGeo = new THREE.SphereGeometry(2,128,128)
+
+const earthMat = new THREE.MeshStandardMaterial({
+map:earthDay,
+bumpMap:earthBump,
+bumpScale:0.05,
+roughness:1
+})
+
+const earth = new THREE.Mesh(earthGeo,earthMat)
+earthGroup.add(earth)
+
+
+/* NIGHT LIGHTS */
+
+const nightMat = new THREE.MeshBasicMaterial({
+map:earthNight,
+transparent:true,
+opacity:0.6,
+blending:THREE.AdditiveBlending
+})
+
+const night = new THREE.Mesh(
+new THREE.SphereGeometry(2.01,128,128),
+nightMat
+)
+
+earthGroup.add(night)
+
+
+/* CLOUDS */
+
+const cloudMat = new THREE.MeshStandardMaterial({
+map:earthCloud,
+transparent:true,
+opacity:0.35,
+depthWrite:false
+})
+
+const clouds = new THREE.Mesh(
+new THREE.SphereGeometry(2.05,128,128),
+cloudMat
+)
+
+earthGroup.add(clouds)
+
+
+/* ATMOSPHERE SCATTERING */
+
+const atmosphereMat = new THREE.ShaderMaterial({
+side:THREE.BackSide,
+transparent:true,
+blending:THREE.AdditiveBlending,
+
+vertexShader:`
+
+varying vec3 vNormal;
+
+void main(){
+
+vNormal = normalize(normalMatrix * normal);
+
+gl_Position = projectionMatrix *
+modelViewMatrix *
+vec4(position,1.0);
+
 }
 
-particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
+`,
 
-const particleMaterial = new THREE.PointsMaterial({
-    color: 0xbdd2ff,
-    size: 0.08,
-    transparent: true,
-    opacity: 0.8
-})
+fragmentShader:`
 
-const particles = new THREE.Points(particleGeometry, particleMaterial)
-scene.add(particles)
+varying vec3 vNormal;
 
-const mouse = {
-    x: 0,
-    y: 0
+void main(){
+
+float intensity =
+pow(0.8 - dot(vNormal,vec3(0,0,1.0)),4.0);
+
+gl_FragColor = vec4(0.3,0.6,1.0,1.0) * intensity;
+
 }
 
-window.addEventListener("mousemove", (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+`
 })
 
-window.addEventListener("resize", () => {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+const atmosphere = new THREE.Mesh(
+new THREE.SphereGeometry(2.2,128,128),
+atmosphereMat
+)
+
+earthGroup.add(atmosphere)
+
+
+/* METEOR SYSTEM */
+
+const meteors = []
+const meteorGroup = new THREE.Group()
+scene.add(meteorGroup)
+
+function createMeteor(){
+
+const geo = new THREE.CylinderGeometry(0.02,0.02,1,6)
+
+const mat = new THREE.MeshBasicMaterial({
+color:0xffffff
 })
 
-function animate() {
-    requestAnimationFrame(animate)
+const meteor = new THREE.Mesh(geo,mat)
 
-    const time = performance.now() * 0.00035
+meteor.rotation.z = Math.PI/2
 
-    heroMesh.rotation.x += 0.0028
-    heroMesh.rotation.y += 0.0035
+meteor.position.set(
+Math.random()*80-40,
+Math.random()*40+10,
+Math.random()*80-40
+)
 
-    torus.rotation.z += 0.002
-    torus.rotation.y += 0.0016
+meteorGroup.add(meteor)
 
-    particles.rotation.y = time * 0.18
-    particles.rotation.x = time * 0.05
+meteors.push({
+mesh:meteor,
+vel:new THREE.Vector3(-0.6,-0.3,0),
+life:0
+})
 
-    camera.position.x += ((mouse.x * 1.5) - camera.position.x) * 0.03
-    camera.position.y += ((mouse.y * 1.2) - camera.position.y) * 0.03
-    camera.lookAt(scene.position)
+}
 
-    renderer.render(scene, camera)
+
+/* MOUSE */
+
+const mouse={x:0,y:0}
+
+window.addEventListener("mousemove",(e)=>{
+
+mouse.x = (e.clientX/window.innerWidth)*2 -1
+mouse.y = -(e.clientY/window.innerHeight)*2 +1
+
+})
+
+
+/* RESIZE */
+
+window.addEventListener("resize",()=>{
+
+camera.aspect = window.innerWidth/window.innerHeight
+camera.updateProjectionMatrix()
+
+renderer.setSize(window.innerWidth,window.innerHeight)
+
+})
+
+
+/* ANIMATE */
+
+function animate(){
+
+requestAnimationFrame(animate)
+
+earth.rotation.y += 0.0012
+clouds.rotation.y += 0.0015
+night.rotation.y += 0.0012
+
+sky.rotation.y += 0.00003
+
+
+/* METEOR SPAWN */
+
+if(Math.random()<0.015){
+createMeteor()
+}
+
+
+/* METEOR UPDATE */
+
+for(let i=meteors.length-1;i>=0;i--){
+
+const m = meteors[i]
+
+m.mesh.position.add(m.vel)
+
+m.life++
+
+if(m.life>100){
+
+meteorGroup.remove(m.mesh)
+meteors.splice(i,1)
+
+}
+
+}
+
+
+/* CAMERA ORBIT FEEL */
+
+camera.position.x += ((mouse.x*1.2)-camera.position.x)*0.02
+camera.position.y += (((mouse.y*0.7)+1.5)-camera.position.y)*0.02
+
+camera.lookAt(0,0,0)
+
+renderer.render(scene,camera)
+
 }
 
 animate()
