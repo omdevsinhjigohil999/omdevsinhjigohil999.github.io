@@ -203,44 +203,103 @@ button {
 }
 
 /* Contact Card Updated */
-.contact-row {
+/* Contact Card - Icon & Popover Style */
+.contact-card {
+    padding: 16px;
+    overflow: visible !important;
+    /* Required for popover to show */
+}
+
+.contact-icons-grid {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 12px;
-    gap: 10px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
-.contact-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text);
-    word-break: break-all;
-    flex: 1;
-}
-
-.contact-link i {
-    width: 16px;
-    color: var(--muted);
-    flex-shrink: 0;
-}
-
-.copy-btn {
-    background: transparent;
-    border: none;
-    color: var(--muted);
-    padding: 4px;
-    border-radius: 4px;
-    transition: all 0.2s;
+.contact-item {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
-.copy-btn:hover {
+.contact-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--primary);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-icon-circle:hover {
+    background: var(--primary);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* The Popover/Tooltip Box */
+.contact-popover {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+}
+
+/* Triangle Arrow */
+.contact-popover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--border) transparent transparent transparent;
+}
+
+.contact-item:hover .contact-popover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.contact-popover span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.copy-btn-mini {
     background: rgba(112, 181, 249, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.copy-btn-mini:hover {
+    background: var(--primary);
+    color: #000;
 }
 
 /* Toast Notification */

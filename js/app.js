@@ -88,6 +88,7 @@ function renderAbout() {
         .join("")
 }
 
+// Inside renderStats() function:
 function renderStats() {
     document.getElementById("stat-experience").textContent =
         `${calculateTotalExperienceYears(portfolio.experience)}+`
@@ -97,15 +98,36 @@ function renderStats() {
 
     // Email Rendering
     const email = portfolio.contact?.email || ""
-    const emailLink = document.getElementById("contact-email")
-    const emailText = document.getElementById("contact-email-text")
-    emailText.textContent = email
-    emailLink.href = email ? `mailto:${email}` : "#"
+    document.getElementById("contact-email-text").textContent = email
 
     // Phone Rendering
     const phone = portfolio.contact?.phone || ""
-    const phoneText = document.getElementById("contact-phone-text")
-    phoneText.textContent = phone
+    document.getElementById("contact-phone-text").textContent = phone
+
+    // LinkedIn Rendering
+    const linkedin = portfolio.hero?.linkedin || "#"
+    const linkedinLink = document.getElementById("contact-linkedin-link");
+    if (linkedinLink) linkedinLink.href = linkedin;
+}
+
+// Inside setupCopyButtons() function:
+function setupCopyButtons() {
+    const emailBtn = document.getElementById("copy-email-btn")
+    const phoneBtn = document.getElementById("copy-phone-btn")
+
+    if (emailBtn) {
+        emailBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevents tooltip from closing immediately
+            copyToClipboard(portfolio.contact.email, "Email copied!");
+        })
+    }
+
+    if (phoneBtn) {
+        phoneBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            copyToClipboard(portfolio.contact.phone, "Phone number copied!");
+        })
+    }
 }
 
 function setupCopyButtons() {
