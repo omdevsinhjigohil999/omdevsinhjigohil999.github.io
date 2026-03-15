@@ -148,14 +148,18 @@ function showToast(message) {
 }
 
 function renderSkills() {
+
     const container = document.getElementById("skills-container")
     container.innerHTML = ""
 
         ; (portfolio.skills || []).forEach(skill => {
+
             const div = document.createElement("div")
             div.className = "skill"
             div.textContent = skill
+
             container.appendChild(div)
+
         })
 }
 
