@@ -80,7 +80,6 @@ function renderAbout() {
 
     const highlightsContainer = document.getElementById("hero-highlights")
     const highlightItems = [
-        "Unity Expert",
         "Multiplayer Systems",
         "AR/VR Development",
         "Gameplay Programming",
